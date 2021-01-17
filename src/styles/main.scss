@@ -1,13 +1,31 @@
+//first day of week:
+$days-margins:
+  "tue" 101px,
+  "wed" 202px,
+  "thu" 303px,
+  "fri" 404px,
+  "sat" 505px,
+  "sun" 606px;
+
+@each $day, $margin in $days-margins {
+  .calendar-#{$day}:first-child {
+    div:first-child {
+      margin-left: $margin;
+    }
+  }
+}
+
+//styles
 * {
   box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100vh;
+  margin: 0;
 }
 
 //calendar num of a day loop:
@@ -22,38 +40,42 @@ body {
 //basic styles:
 .calendar {
   display: flex;
-  gap: 1px;
-  max-width: 720px;
   flex-wrap: wrap;
+  gap: 1px;
+  max-width: 706px;
 
   div {
-    height: 100px;
-    width: 100px;
-    background-color: #eee;
-    align-self: flex-start;
-    border: 1px solid black;
-    transition: all ease 0.5s;
     position: relative;
     top: 0;
 
+    height: 100px;
+    width: 100px;
+
+    background-color: #eee;
+    border: 1px solid black;
+
+    transition: all ease 0.5s;
+
     &:hover {
       top: -20px;
+
       background-color: #ffbfcb;
       cursor: pointer;
     }
 
     &::after {
       display: flex;
-      line-height: 100px;
-      align-items: center;
       justify-content: center;
+
       font-family: Arial, sans-serif;
       font-size: 30px;
+      line-height: 100px;
+
       color: #000;
     }
   }
 
-  // delete days
+  // remove last days
   &-30 {
     div:nth-last-child(1) {
       display: none;
@@ -67,43 +89,6 @@ body {
   &-28 {
     div:nth-last-child(-n+3) {
       display: none;
-    }
-  }
-
-  //first day of week:
-  &-tue {
-    div:first-child {
-      margin-left: 101px;
-    }
-  }
-
-  &-wed {
-    div:first-child {
-      margin-left: 202px;
-    }
-  }
-
-  &-thu {
-    div:first-child {
-      margin-left: 303px;
-    }
-  }
-
-  &-fri {
-    div:first-child {
-      margin-left: 404px;
-    }
-  }
-
-  &-sat {
-    div:first-child {
-      margin-left: 505px;
-    }
-  }
-
-  &-sun {
-    div:first-child {
-      margin-left: 606px;
     }
   }
 }
