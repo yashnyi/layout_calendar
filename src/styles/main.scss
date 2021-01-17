@@ -1,21 +1,6 @@
-//first day of week:
-$days-margins:
-  "tue" 101px,
-  "wed" 202px,
-  "thu" 303px,
-  "fri" 404px,
-  "sat" 505px,
-  "sun" 606px;
+@import "day-of-the-month.scss";
+@import "first-day-of-the-week.scss";
 
-@each $day, $margin in $days-margins {
-  .calendar-#{$day}:first-child {
-    div:first-child {
-      margin-left: $margin;
-    }
-  }
-}
-
-//styles
 * {
   box-sizing: border-box;
 }
@@ -28,16 +13,6 @@ body {
   margin: 0;
 }
 
-//calendar num of a day loop:
-@for $i from 1 through 31 {
-  .calendar div:nth-child(#{$i}) {
-    &::after {
-      content: "#{$i}";
-    }
-  }
-}
-
-//basic styles:
 .calendar {
   display: flex;
   flex-wrap: wrap;

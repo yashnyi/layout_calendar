@@ -1,0 +1,8 @@
+//loop generates day of the month:
+@for $i from 1 through 31 {
+  .calendar div:nth-child(#{$i}) {
+    &::after {
+      content: "#{$i}";
+    }
+  }
+}
